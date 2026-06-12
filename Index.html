@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Portal | Registration & Profile Setup</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Auth Layout -->
+    <div id="auth-container" class="auth-layout">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="brand-logo">
+                    <i class="fas fa-shield-halved"></i>
+                    <span>VendorPortal</span>
+                </div>
+                <h2 id="auth-title">Welcome Back</h2>
+                <p id="auth-subtitle">Please enter your details to continue</p>
+            </div>
+
+            <!-- Login View -->
+            <div id="view-login" class="auth-view">
+                <form id="form-login" class="modern-form">
+                    <div class="form-group">
+                        <label>Email or Mobile Number</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="text" id="login-id" placeholder="Enter email or mobile" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="login-pass" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox"> Remember me
+                            <span class="checkmark"></span>
+                        </label>
+                        <a href="#" class="text-link">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                    <p class="auth-footer">
+                        Don't have an account? <a href="#" id="go-to-register" class="text-link-primary">Register here</a>
+                    </p>
+                </form>
+            </div>
+
+            <!-- Registration View -->
+            <div id="view-register" class="auth-view hidden">
+                <form id="form-register" class="modern-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="reg-name" placeholder="John Doe" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="reg-email" placeholder="john@example.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile Number</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" id="reg-phone" placeholder="+91 98765 43210" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="reg-pass" placeholder="••••••••" required>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Confirm Password</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="reg-conf-pass" placeholder="••••••••" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="reg-terms" required> I accept the Terms & Conditions
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary">Create Account</button>
+                    <p class="auth-footer">
+                        Already have an account? <a href="#" id="go-to-login" class="text-link-primary">Login here</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Setup Layout -->
+    <div id="profile-container" class="profile-layout hidden">
+        <div class="profile-sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-shield-halved"></i>
+                <span>VendorPortal</span>
+            </div>
+            <nav class="profile-nav">
+                <div class="nav-item active" data-step="1">
+                    <span class="step-num">1</span>
+                    <span class="step-label">Business Info</span>
+                </div>
+                <div class="nav-item" data-step="2">
+                    <span class="step-num">2</span>
+                    <span class="step-label">Contact Details</span>
+                </div>
+                <div class="nav-item" data-step="3">
+                    <span class="step-num">3</span>
+                    <span class="step-label">Address Info</span>
+                </div>
+                <div class="nav-item" data-step="4">
+                    <span class="step-num">4</span>
+                    <span class="step-label">Final Details</span>
+                </div>
+            </nav>
+        </div>
+        <div class="profile-main">
+            <div class="profile-header">
+                <h1>Complete Your Vendor Profile</h1>
+                <p>Please provide the necessary information to verify your business.</p>
+            </div>
+
+            <form id="form-profile" class="profile-form">
+                <!-- Step 1: Business Information -->
+                <div class="profile-step active" data-step="1">
+                    <div class="section-title">Business Information</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Business Name *</label>
+                            <input type="text" name="businessName" placeholder="Enterprise Ltd" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Business Type *</label>
+                            <select name="businessType" required>
+                                <option value="">Select Type</option>
+                                <option value="private">Private Limited</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="sole">Sole Proprietorship</option>
+                                <option value="public">Public Limited</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Business Category *</label>
+                            <input type="text" name="businessCategory" placeholder="e.g. IT Services" required>
+                        </div>
+                        <div class="form-group">
+                            <label>GST Number *</label>
+                            <input type="text" name="gstNumber" placeholder="22AAAAA0000A1Z5" required>
+                        </div>
+                        <div class="form-group">
+                            <label>PAN Number *</label>
+                            <input type="text" name="panNumber" placeholder="ABCDE1234F" required>
+                        </div>
+                    </div>
+                    <div class="step-actions">
+                        <button type="button" class="btn-secondary" disabled>Previous</button>
+                        <button type="button" class="btn-primary next-step">Save & Continue</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Contact Information -->
+                <div class="profile-step hidden" data-step="2">
+                    <div class="section-title">Contact Information</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Contact Person Name *</label>
+                            <input type="text" name="contactName" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Number *</label>
+                            <input type="tel" name="contactPhone" placeholder="+91 ..." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Alternate Contact Number</label>
+                            <input type="tel" name="altPhone" placeholder="+91 ...">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Email *</label>
+                            <input type="email" name="contactEmail" placeholder="contact@business.com" required>
+                        </div>
+                    </div>
+                    <div class="step-actions">
+                        <button type="button" class="btn-secondary prev-step">Previous</button>
+                        <button type="button" class="btn-primary next-step">Save & Continue</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Address Information -->
+                <div class="profile-step hidden" data-step="3">
+                    <div class="section-title">Address Information</div>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Address Line 1 *</label>
+                            <input type="text" name="address1" placeholder="Street, Area" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Address Line 2</label>
+                            <input type="text" name="address2" placeholder="Landmark, etc.">
+                        </div>
+                        <div class="form-group">
+                            <label>City *</label>
+                            <input type="text" name="city" placeholder="City" required>
+                        </div>
+                        <div class="form-group">
+                            <label>State *</label>
+                            <input type="text" name="state" placeholder="State" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Country *</label>
+                            <input type="text" name="country" value="India" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Pincode *</label>
+                            <input type="text" name="pincode" placeholder="6-digit code" required>
+                        </div>
+                    </div>
+                    <div class="step-actions">
+                        <button type="button" class="btn-secondary prev-step">Previous</button>
+                        <button type="button" class="btn-primary next-step">Save & Continue</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Additional Info & Documents -->
+                <div class="profile-step hidden" data-step="4">
+                    <div class="section-title">Additional Information</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Company Logo (Optional)</label>
+                            <div class="file-upload">
+                                <input type="file" id="logo-upload" accept="image/*">
+                                <div class="file-upload-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Click to upload logo</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Website URL</label>
+                            <input type="url" name="website" placeholder="https://www.business.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Years of Experience</label>
+                            <input type="number" name="experience" placeholder="e.g. 5">
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Business Description</label>
+                            <textarea name="description" rows="4" placeholder="Tell us more about your business..."></textarea>
+                        </div>
+                    </div>
+                    <div class="step-actions">
+                        <button type="button" class="btn-secondary prev-step">Previous</button>
+                        <button type="submit" class="btn-success">Submit Profile</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Layout -->
+    <div id="dashboard-container" class="dashboard-layout hidden">
+        <aside class="dash-sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-shield-halved"></i>
+                <span>VendorPortal</span>
+            </div>
+            <nav class="dash-nav">
+                <a href="#" class="nav-item active"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#" class="nav-item"><i class="fas fa-user-tie"></i> Profile</a>
+                <a href="#" class="nav-item"><i class="fas fa-box"></i> Products</a>
+                <a href="#" class="nav-item"><i class="fas fa-chart-line"></i> Analytics</a>
+                <a href="#" class="nav-item"><i class="fas fa-cog"></i> Settings</a>
+            </nav>
+            <div class="sidebar-user">
+                <div class="user-info">
+                    <div class="user-avatar">AY</div>
+                    <div class="user-details">
+                        <span class="user-name" id="dash-user-name">User Name</span>
+                        <span class="user-role">Vendor Account</span>
+                    </div>
+                </div>
+                <button id="btn-logout" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </aside>
+        <main class="dash-main">
+            <header class="dash-header">
+                <h1>Welcome, <span id="greeting-name">Vendor</span>!</h1>
+                <div class="header-actions">
+                    <div class="status-badge" id="vendor-status-badge">Pending Approval</div>
+                    <div class="user-profile-pic"></div>
+                </div>
+            </header>
+
+            <div class="dash-content">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="fas fa-shopping-cart"></i></div>
+                        <div class="stat-data">
+                            <span class="stat-val">0</span>
+                            <span class="stat-label">Total Orders</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="stat-data">
+                            <span class="stat-val">$0.00</span>
+                            <span class="stat-label">Total Earnings</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon purple"><i class="fas fa-star"></i></div>
+                        <div class="stat-data">
+                            <span class="stat-val">N/A</span>
+                            <span class="stat-label">Avg Rating</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-widgets">
+                    <div class="widget main-widget">
+                        <h3>Recent Activity</h3>
+                        <div class="empty-state">
+                            <i class="fas fa-folder-open"></i>
+                            <p>Your account is under review. You'll see your activity here once approved.</p>
+                        </div>
+                    </div>
+                    <div class="widget side-widget">
+                        <h3>Account Health</h3>
+                        <div class="health-item">
+                            <span>Profile Completion</span>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
+                        </div>
+                        <div class="health-item">
+                            <span>Verification Status</span>
+                            <span class="status-text pending">Pending Admin Review</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
